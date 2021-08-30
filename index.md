@@ -1,6 +1,11 @@
 ## Welcome
 
 ### Some Links of mine
+
+-[Coarde -Buy Custom High performance PC (India only)](coarde.com)
+
+-[Backup Snap packages](https://github.com/virusz4274/snapbackup)
+
 -[Chaotic-aur Indian Mirror](https://virusz4274-chaoticaur-inmirror.coarde.com/)
 
 -[Youtube](https://www.youtube.com/channel/UChdnSUvdnUzzUHyvesJUYUw)
