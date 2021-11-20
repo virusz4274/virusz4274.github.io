@@ -2,9 +2,9 @@
 
 ### Some Links of mine
 
--[Coarde -Buy Custom High performance PC (India only)](coarde.com)
+-[Coarde -Buy Custom High performance PC (India only)](https://coarde.com)
 
--[Github Profile](github.com/virusz4274)
+-[Github Profile](https://github.com/virusz4274)
 
 -[Backup Snap packages](https://github.com/virusz4274/snapbackup)
 
@@ -16,4 +16,4 @@
 
 -[Instagram](https://instagram.com/_hari_sankar_)
 
--[uoykcufoa.ml](uoykcufoa.ml)
+-[uoykcufoa.ml](http://uoykcufoa.ml)
