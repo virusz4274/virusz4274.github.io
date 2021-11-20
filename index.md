@@ -4,6 +4,8 @@
 
 -[Coarde -Buy Custom High performance PC (India only)](coarde.com)
 
+-[Github Profile](github.com/virusz4274)
+
 -[Backup Snap packages](https://github.com/virusz4274/snapbackup)
 
 -[Chaotic-aur Indian Mirror](https://virusz4274-chaoticaur-inmirror.coarde.com/)
