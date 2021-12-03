@@ -1,7 +1,7 @@
 ## Welcome
 
 If you are a gamer / Professional looking to buy PC, we can hook you up with a really good value for money PC. Contact me or visit our website from below.
-If you are in india and need of a website for your business contact me, I work at [coarde](https://coarde.com) we do professional websites, digital marketting and IT Administration and setup for business.
+If you are in india and need of a website for your business contact me, I work at [coarde](https://coarde.com) we do professional websites, digital marketting, IT Administration and setup for business.
 
 Contact me 
 * Email: harisankar@coarde.com
