@@ -5,7 +5,7 @@ If you are in india and need of a website for your business contact me, I work a
 
 Contact me 
 * Email: harisankar@coarde.com
-* Telegram: t.me/virusz4274
+* Telegram: [t.me/virusz4274](https://t.me/virusz4274)
 
 ### Some Links of mine
 
