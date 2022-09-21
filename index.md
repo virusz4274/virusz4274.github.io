@@ -28,7 +28,7 @@ Contact me
 -[Instagram](https://instagram.com/_hari_sankar_)
 
 
-## PAYMENT LINKS
+### PAYMENT LINKS
 
 -[Paypal](/paypal.html)
 
