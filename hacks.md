@@ -1,7 +1,22 @@
 ## Universal hack
 
 ### works with most of the competitive games out there
+Undetectable hack that works even after game gets an update
+
 instructions are in the zip file, extract and read the instruction
+
+### SUPPORTED GAMES
+
+* VALORANT
+* CSGO
+* PUBG
+* FARLIGHT
+* FORTNITE
+* LOL
+* Dota 2
+* Overwatch
+* Rocket League
+* and many more
 
 ### DOWNLOAD ONLY IF YOU FACE BELOW ISSUES
 
