@@ -5,6 +5,11 @@ Undetectable hack that works even after game gets an update
 
 instructions are in the zip file, extract and read the instruction
 
+### FEATURES
+
+* FPS BOOST or get new PC from [ghostparticle.builds](https://instagram.com/ghostparticle.builds)
+* ping stabilization through routing traffic
+
 ### SUPPORTED GAMES
 
 * VALORANT
