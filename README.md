@@ -73,7 +73,7 @@ repository: https://github.com/owner/project
 ## Migration
 
 - The original `index.md` content is retained on `/links/`, linked from About.
-- Existing project links became Snap backup, Discord rich presence, and Coarde showcase entries.
+- The original Coarde link remains as a showcase entry.
 - `paypal.html` and `akefredirect.html` retain their original URLs and bytes under `public/`.
 - The custom domain remains `virusz4274.tech` via `public/CNAME` and `astro-paper.config.ts`.
 

@@ -10,7 +10,11 @@ for (const [slug, title] of [["tipkaro", "TipKaro"], ["callery", "Callery"], ["h
 }
 assert.match(read("links/index.html"), /Chaotic-aur/);
 assert.match(read("about/index.html"), /harisankar@coarde.com/);
-assert.match(read("projects/index.html"), /Snap backup/);
+assert.match(read("projects/index.html"), /Callery/);
+assert.doesNotMatch(read("projects/index.html") + read("links/index.html"), /snapbackup|Snap backup|discord-rich-presence|Discord rich presence/i);
+for (const slug of ["snapbackup", "discord-rich-presence"]) {
+  assert.ok(!existsSync(`dist/projects/${slug}/index.html`));
+}
 assert.match(read("posts/index.html"), /No articles yet/);
 for (const path of ["posts/2023/06/hacks/index.html", "hacks.html", "hacks.zip"]) {
   assert.ok(!existsSync(`dist/${path}`), `Removed prank must not be published: ${path}`);

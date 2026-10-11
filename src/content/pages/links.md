@@ -19,9 +19,7 @@ Contact me
 
 - [Chaotic-aur Indian Mirror](https://chaotic-aur.coarde.com/)
 
-- [Backup Snap packages](https://github.com/virusz4274/snapbackup)
 
-- [DISCORD RICH PRESENCE](https://github.com/virusz4274/discord-rich-presence)
 
 - [Discord Server](https://coarde.com/discord)
 
