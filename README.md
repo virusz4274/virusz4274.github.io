@@ -73,9 +73,8 @@ repository: https://github.com/owner/project
 ## Migration
 
 - The original `index.md` content is retained on `/links/`, linked from About.
-- `hacks.md` is now `src/content/blog/2023/06/hacks.md`, using its last Git modification date. `/hacks.html` redirects to its new URL.
 - Existing project links became Snap backup, Discord rich presence, and Coarde showcase entries.
-- `paypal.html`, `akefredirect.html`, and `hacks.zip` retain their original URLs and bytes under `public/`.
+- `paypal.html` and `akefredirect.html` retain their original URLs and bytes under `public/`.
 - The custom domain remains `virusz4274.tech` via `public/CNAME` and `astro-paper.config.ts`.
 
 The legacy payment page is preserved; payment transactions and third-party scripts are not part of the build checks.

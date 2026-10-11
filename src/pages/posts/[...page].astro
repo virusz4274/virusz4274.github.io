@@ -14,7 +14,33 @@ import config from "@/config";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
-  return paginate(getSortedPosts(posts), { pageSize: config.posts.perPage });
+  const sortedPosts = getSortedPosts(posts);
+  if (sortedPosts.length === 0) {
+    return [
+      {
+        params: { page: undefined },
+        props: {
+          page: {
+            data: [],
+            start: 0,
+            end: 0,
+            total: 0,
+            currentPage: 1,
+            size: config.posts.perPage,
+            lastPage: 1,
+            url: {
+              current: "/posts/",
+              prev: undefined,
+              next: undefined,
+              first: undefined,
+              last: undefined,
+            },
+          },
+        },
+      },
+    ];
+  }
+  return paginate(sortedPosts, { pageSize: config.posts.perPage });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
@@ -29,6 +55,7 @@ const t = useTranslations(locale);
   <Breadcrumb />
 
   <Main pageTitle={t.pages.postsTitle} pageDesc={t.pages.postsDesc}>
+    {page.data.length === 0 && <p class="my-6">No articles yet.</p>}
     <ul>
       {page.data.map(data => <Card {...data} />)}
     </ul>

@@ -10,12 +10,13 @@ for (const [slug, title] of [["tipkaro", "TipKaro"], ["callery", "Callery"], ["h
 }
 assert.match(read("links/index.html"), /Chaotic-aur/);
 assert.match(read("about/index.html"), /harisankar@coarde.com/);
-assert.match(read("posts/2023/06/hacks/index.html"), /SUPPORTED GAMES/);
-assert.match(read("posts/2023/06/hacks/index.html"), /aria-label="Table of contents"/);
-assert.match(read("hacks.html"), /\/posts\/2023\/06\/hacks\//);
 assert.match(read("projects/index.html"), /Snap backup/);
-assert.match(read("tags/tech/index.html"), /Universal hack/);
-for (const path of ["paypal.html", "akefredirect.html", "hacks.zip", "CNAME"]) {
+assert.match(read("posts/index.html"), /No articles yet/);
+for (const path of ["posts/2023/06/hacks/index.html", "hacks.html", "hacks.zip"]) {
+  assert.ok(!existsSync(`dist/${path}`), `Removed prank must not be published: ${path}`);
+}
+assert.doesNotMatch(homepage + read("rss.xml"), /Universal hack/);
+for (const path of ["paypal.html", "akefredirect.html", "CNAME"]) {
   assert.deepEqual(readFileSync(`dist/${path}`), readFileSync(`public/${path}`));
 }
 assert.ok(existsSync("dist/pagefind/pagefind.js"));
