@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import Main from "@/components/Main.astro";
+import config from "@/config";
+const projects = (
+  await getCollection("projects", ({ data }) => !data.draft)
+).sort(
+  (a, b) =>
+    a.data.order - b.data.order || a.data.title.localeCompare(b.data.title)
+);
+---
+
+<Layout
+  title={`Projects | ${config.site.title}`}
+  description="Products, experiments, and practical tools by Harisankar."
+>
+  <Header />
+  <Main
+    pageTitle="Projects"
+    pageDesc="Products, experiments, and practical tools."
+  >
+    <ul>{projects.map(project => <ProjectCard {project} />)}</ul>
+  </Main>
+  <Footer />
+</Layout>

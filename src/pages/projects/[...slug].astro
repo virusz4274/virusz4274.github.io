@@ -1,0 +1,63 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import TableOfContents from "@/components/TableOfContents.astro";
+import config from "@/config";
+export async function getStaticPaths() {
+  return (await getCollection("projects", ({ data }) => !data.draft)).map(
+    project => ({ params: { slug: project.id }, props: { project } })
+  );
+}
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+const { project } = Astro.props;
+const { Content, headings } = await render(project);
+---
+
+<Layout
+  title={`${project.data.title} | ${config.site.title}`}
+  description={project.data.description}
+>
+  <Header />
+  <main
+    id="main-content"
+    class="app-layout reading-main my-8"
+    data-pagefind-body
+  >
+    <a class="text-accent hover:underline" href="/projects/">← All projects</a>
+    <h1 class="text-accent mt-6 text-3xl font-bold">{project.data.title}</h1>
+    <p class="my-4">{project.data.description}</p>
+    <ul class="my-4 flex flex-wrap gap-3" aria-label="Project topics">
+      {project.data.tags.map(tag => <li>#{tag}</li>)}
+    </ul>
+    <div class="flex gap-4">
+      {
+        project.data.url && (
+          <a class="text-accent underline" href={project.data.url}>
+            Visit project
+          </a>
+        )
+      }
+      {
+        project.data.repository && (
+          <a class="text-accent underline" href={project.data.repository}>
+            Source code
+          </a>
+        )
+      }
+    </div>
+    <div class="reading-layout">
+      <TableOfContents {headings} />
+      <article
+        id="article"
+        class="app-prose prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg) mt-8 min-w-0"
+      >
+        <Content />
+      </article>
+    </div>
+  </main>
+  <Footer />
+</Layout>

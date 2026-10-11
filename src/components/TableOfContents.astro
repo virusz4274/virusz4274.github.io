@@ -1,0 +1,137 @@
+---
+import type { MarkdownHeading } from "astro";
+interface Props {
+  headings: MarkdownHeading[];
+}
+const headings = Astro.props.headings.filter(
+  heading => heading.depth >= 2 && heading.depth <= 4
+);
+---
+
+{
+  headings.length > 0 && (
+    <aside class="toc" data-pagefind-ignore>
+      <details open>
+        <summary>On this page</summary>
+        <nav aria-label="Table of contents">
+          <ol>
+            {headings.map(heading => (
+              <li style={`--toc-indent: ${heading.depth - 2}`}>
+                <a href={`#${heading.slug}`}>{heading.text}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      </details>
+    </aside>
+  )
+}
+<style>
+  .toc {
+    position: sticky;
+    top: 1rem;
+    z-index: 5;
+    align-self: start;
+    margin-top: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    background: var(--color-background);
+  }
+  summary {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  nav {
+    max-height: min(35dvh, 20rem);
+    overflow-y: auto;
+    padding: 0 1rem 0.75rem;
+  }
+  ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    padding-inline-start: calc(var(--toc-indent) * 0.75rem);
+  }
+  a {
+    display: block;
+    padding: 0.35rem 0;
+    font-size: 0.875rem;
+    overflow-wrap: anywhere;
+  }
+  a:hover,
+  a[aria-current="location"] {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+  @media (min-width: 1280px) {
+    .toc {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    nav {
+      max-height: calc(100dvh - 8rem);
+    }
+  }
+</style>
+<script>
+  let cleanup: (() => void) | undefined;
+  function setupToc() {
+    cleanup?.();
+    const toc = document.querySelector<HTMLElement>(".toc");
+    if (!toc) return;
+    const details = toc.querySelector("details");
+    const desktop = window.matchMedia("(min-width: 1280px)");
+    const updateLayout = () => {
+      if (details) details.open = desktop.matches;
+    };
+    updateLayout();
+    desktop.addEventListener("change", updateLayout);
+    const onNavigate = (event: MouseEvent) => {
+      if (
+        !desktop.matches &&
+        details &&
+        (event.target as HTMLElement).closest("a")
+      )
+        details.open = false;
+    };
+    toc.addEventListener("click", onNavigate);
+    const links = Array.from(
+      toc.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')
+    );
+    const headings = links
+      .map(link =>
+        document.getElementById(decodeURIComponent(link.hash.slice(1)))
+      )
+      .filter((heading): heading is HTMLElement => heading !== null);
+    let frame = 0;
+    function updateActive() {
+      frame = 0;
+      const offset = desktop.matches ? 32 : (toc?.offsetHeight ?? 0) + 32;
+      let active = headings[0];
+      for (const heading of headings) {
+        if (heading.getBoundingClientRect().top <= offset) active = heading;
+      }
+      for (const link of links) {
+        if (decodeURIComponent(link.hash.slice(1)) === active?.id)
+          link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      }
+    }
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(updateActive);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    updateActive();
+    cleanup = () => {
+      toc?.removeEventListener("click", onNavigate);
+      desktop.removeEventListener("change", updateLayout);
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }
+  document.addEventListener("astro:page-load", setupToc);
+  document.addEventListener("astro:before-swap", () => cleanup?.());
+</script>

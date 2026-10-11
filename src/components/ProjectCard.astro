@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from "astro:content";
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+const { project } = Astro.props;
+---
+
+<li class="border-border border-b py-6 last:border-b-0">
+  <h3 class="text-xl font-semibold">
+    <a class="text-accent hover:underline" href={`/projects/${project.id}/`}
+      >{project.data.title}</a
+    >
+  </h3>
+  <p class="mt-2 leading-relaxed">{project.data.description}</p>
+  <a
+    class="text-accent mt-3 inline-block underline decoration-dashed underline-offset-4"
+    href={`/projects/${project.id}/`}
+    >Explore {project.data.title} <span aria-hidden="true">→</span></a
+  >
+  {
+    project.data.url && (
+      <a
+        class="text-accent ms-5 inline-block underline decoration-dashed underline-offset-4"
+        href={project.data.url}
+      >
+        Visit project
+      </a>
+    )
+  }
+</li>
