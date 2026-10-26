@@ -28,4 +28,14 @@ const { project } = Astro.props;
       </a>
     )
   }
+  {
+    project.data.repository && (
+      <a
+        class="text-accent ms-5 inline-block underline decoration-dashed underline-offset-4"
+        href={project.data.repository}
+      >
+        Source code
+      </a>
+    )
+  }
 </li>

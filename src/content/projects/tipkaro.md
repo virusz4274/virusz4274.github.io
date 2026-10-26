@@ -1,7 +1,7 @@
 ---
 title: TipKaro
 description: A creator-payments platform with stream overlays and payment workflows.
-url: https://example.com/tipkaro
+url: https://tipkaro.in
 featured: true
 order: 1
 ---

@@ -1,7 +1,7 @@
 ---
 title: Callery
 description: Organize, transcribe, transliterate, and summarize call recordings, then find conversations by meaning.
-url: https://example.com/callery
+repository: https://github.com/virusz4274/callery
 featured: true
 order: 2
 ---

@@ -4,7 +4,7 @@ const read = path => readFileSync(`dist/${path}`, "utf8");
 const homepage = read("index.html");
 assert.match(homepage, /Harisankar/);
 assert.ok(homepage.indexOf('id="selected-projects"') < homepage.indexOf('id="writing"'));
-for (const [slug, title, url] of [["tipkaro", "TipKaro", "https://example.com/tipkaro"], ["callery", "Callery", "https://example.com/callery"], ["hermes-phone", "Hermes Phone", "https://github.com/virusz4274/hermes-phone-hfp"]]) {
+for (const [slug, title, url] of [["tipkaro", "TipKaro", "https://tipkaro.in"], ["callery", "Callery", "https://github.com/virusz4274/callery"], ["hermes-phone", "Hermes Phone", "https://github.com/virusz4274/hermes-phone-hfp"]]) {
   assert.match(homepage, new RegExp(title));
   assert.ok(read(`projects/${slug}/index.html`).includes(url));
 }
